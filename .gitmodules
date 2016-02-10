@@ -1,0 +1,6 @@
+[submodule "ConsoleEngine"]
+	path = ConsoleEngine
+	url = https://github.com/Cologler/Jasily.Framework.ConsoleEngine.git
+[submodule "Inoreader"]
+	path = Inoreader
+	url = https://github.com/Cologler/Inoreader.git

@@ -7,7 +7,7 @@
     <ProjectGuid>{C961A909-6241-49E9-A50D-1CD88E6C4001}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Inoreader_Shell</RootNamespace>
+    <RootNamespace>InoreaderShell</RootNamespace>
     <AssemblyName>Inoreader-Shell</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="RestSharp, Version=105.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.0.1\lib\net4\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,11 +46,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\AuthCommand.cs" />
+    <Compile Include="Commands\AuthedCommand.cs" />
+    <Compile Include="Commands\BaseCommand.cs" />
+    <Compile Include="Commands\FilterCommand.cs" />
+    <Compile Include="Commands\GetGetUserInfoCommand.cs" />
+    <Compile Include="Commands\ItemCommand.cs" />
+    <Compile Include="Commands\ListFeedCommand.cs" />
+    <Compile Include="Commands\ListSubscriptionsCommand.cs" />
+    <Compile Include="Commands\MakeAllReadCommand.cs" />
+    <Compile Include="Commands\Variables.cs" />
+    <Compile Include="Models\InoreaderShellFeedItem.cs" />
+    <Compile Include="Models\InoreaderShellItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConsoleEngine\Jasily.Framework.ConsoleEngine\Jasily.Framework.ConsoleEngine.csproj">
+      <Project>{7f61b2cc-ddf5-40e4-800d-e5f21cca76b0}</Project>
+      <Name>Jasily.Framework.ConsoleEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Inoreader\Inoreader\Inoreader.csproj">
+      <Project>{287be39a-dbb1-4b7b-88d5-11c59062b012}</Project>
+      <Name>Inoreader</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

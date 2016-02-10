@@ -1,15 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Jasily.Framework.ConsoleEngine;
+using System;
+using System.Reflection;
 
-namespace Inoreader_Shell
+namespace InoreaderShell
 {
     class Program
     {
         static void Main(string[] args)
         {
+            var engine = new JasilyConsoleEngine();
+            engine.RegistAssembly(Assembly.GetExecutingAssembly());
+            using (var session = engine.StartSession())
+            {
+                while (true)
+                {
+                    var line = Console.ReadLine() ?? string.Empty;
+                    if (line.ToLower() == "exit") return;
+                    session.Execute(line);
+                }
+            }
         }
     }
 }
