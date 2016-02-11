@@ -4,13 +4,18 @@ using Jasily.Framework.ConsoleEngine.Attributes;
 
 namespace InoreaderShell.Commands
 {
-    [Command("auth", IsStatic = true, Desciption = "authentication using google email and password.")]
+    [Command("auth")]
+    [Desciption("authentication using google email and password.")]
     public sealed class AuthCommand : BaseCommand
     {
-        [Parameter(true, "u", "user")]
+        [Parameter("user")]
+        [Alias("u")]
+        [Desciption("google email")]
         public string UserName { get; set; }
 
-        [Parameter(true, "p", "pwd")]
+        [Parameter("pwd")]
+        [Alias("p")]
+        [Desciption("google account password")]
         public string Password { get; set; }
 
         protected override void Execute(Variables variables, Session session, CommandLine line)

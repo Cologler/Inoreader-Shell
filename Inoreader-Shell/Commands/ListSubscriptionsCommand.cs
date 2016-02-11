@@ -4,7 +4,9 @@ using Jasily.Framework.ConsoleEngine.Attributes;
 
 namespace InoreaderShell.Commands
 {
-    [Command("list-sub", IsStatic = true, Desciption = "get subscriptions list")]
+    [Command("list-sub", IsStatic = true)]
+    [Alias("ls")]
+    [Desciption("get subscriptions list")]
     public sealed class ListSubscriptionsCommand : AuthedCommand
     {
         protected override void Execute(Variables variables, Proxy inoreader, Session session, CommandLine line)

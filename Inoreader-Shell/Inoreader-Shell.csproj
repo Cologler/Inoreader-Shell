@@ -55,6 +55,7 @@
     <Compile Include="Commands\ListFeedCommand.cs" />
     <Compile Include="Commands\ListSubscriptionsCommand.cs" />
     <Compile Include="Commands\MakeAllReadCommand.cs" />
+    <Compile Include="Commands\SkipCommand.cs" />
     <Compile Include="Commands\Variables.cs" />
     <Compile Include="Models\InoreaderShellFeedItem.cs" />
     <Compile Include="Models\InoreaderShellItem.cs" />

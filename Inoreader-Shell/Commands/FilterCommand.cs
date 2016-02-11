@@ -7,7 +7,9 @@ using System.Linq;
 
 namespace InoreaderShell.Commands
 {
-    [Command("filter", Desciption = "filter current list")]
+    [Command("filter")]
+    [Alias("f")]
+    [Desciption("filter current list")]
     public sealed class FilterCommand : ItemCommand
     {
         protected override void Execute(Variables variables, StreamItems feed, Proxy inoreader,
@@ -16,26 +18,27 @@ namespace InoreaderShell.Commands
             var blocks = line.Blocks.ToArray();
             if (blocks.Length > 2)
             {
-                var f = this.GetFieldFunc(blocks[0].OriginText);
-                if (f == null)
+                var selector = this.GetSelectorFunc(blocks[0].OriginText);
+                if (selector == null)
                 {
                     return;
                 }
-                var a = this.GetFilterFunc(blocks[1].OriginText);
-                if (a == null)
+                var filter = this.GetFilterFunc(blocks[1].OriginText);
+                if (filter == null)
                 {
                     return;
                 }
-                this.Variables.Feed.Items = this.Variables.Feed.Items.Where(z => a(f(z), blocks[2].OriginText)).ToList();
-                this.Print(session);
+                feed.Items = feed.Items.Where(z => filter(selector(z), blocks[2].OriginText)).ToList();
             }
+            this.Print(session);
         }
 
-        private Func<Item, string> GetFieldFunc(string field)
+        private Func<Item, string> GetSelectorFunc(string field)
         {
             switch (field.ToLower())
             {
                 case "title":
+                case "t":
                     return z => z.Title;
             }
             return null;
@@ -45,8 +48,12 @@ namespace InoreaderShell.Commands
         {
             switch (action.ToLower())
             {
+                case "c":
                 case "contain":
-                    return (z, x) => z.Contains(x);
+                    return (z, x) => z.ToLower().Contains(x.ToLower());
+                case "e":
+                case "eq":
+                    return (z, x) => z == x;
             }
             return null;
         }

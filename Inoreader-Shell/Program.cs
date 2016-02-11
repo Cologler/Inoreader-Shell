@@ -9,7 +9,7 @@ namespace InoreaderShell
         static void Main(string[] args)
         {
             var engine = new JasilyConsoleEngine();
-            engine.RegistAssembly(Assembly.GetExecutingAssembly());
+            engine.MapperManager.RegistAssembly(Assembly.GetExecutingAssembly());
             using (var session = engine.StartSession())
             {
                 while (true)

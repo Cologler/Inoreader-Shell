@@ -6,16 +6,25 @@ using Jasily.Framework.ConsoleEngine.Attributes;
 
 namespace InoreaderShell.Commands
 {
-    [Command("list-feed", Desciption = "get subscriptions list")]
+    [Command("list-feed")]
+    [Alias("lf")]
+    [Desciption("get subscriptions list")]
     public sealed class ListFeedCommand : ItemCommand
     {
-        [Parameter(false, "id", Desciption = "id of subscription")]
+        [Parameter("id")]
+        [Alias("i")]
+        [Desciption("id of subscription")]
         public int SubscriptionId { get; set; }
 
-        [Parameter(true, "count", Desciption = "count of feeds")]
+        [Parameter("count", IsOptional = true)]
+        [Alias("c")]
+        [Alias("n")]
+        [Desciption("count of feeds")]
         public int Count { get; set; } = 200;
 
-        [Parameter(true, "filter", Desciption = "count of feeds")]
+        [Parameter("filter", IsOptional = true)]
+        [Alias("f")]
+        [Desciption("filter of feeds")]
         public ItemsFilterEnum Filter { get; set; } = ItemsFilterEnum.OnlyUnread;
 
         protected override void Execute(Variables variables, Proxy inoreader, Session session, CommandLine line)
