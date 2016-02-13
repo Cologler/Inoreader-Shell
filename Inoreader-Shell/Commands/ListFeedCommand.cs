@@ -3,7 +3,6 @@ using Inoreader.Dto;
 using Inoreader.Enum;
 using Jasily.Framework.ConsoleEngine;
 using Jasily.Framework.ConsoleEngine.Attributes;
-using System;
 
 namespace InoreaderShell.Commands
 {
@@ -60,15 +59,6 @@ namespace InoreaderShell.Commands
         protected override void Execute(
             Variables variables, StreamItems feed, Proxy inoreader, Session session, CommandLine line)
         {
-        }
-
-        [Command("feed")]
-        public void Feed(
-            [Alias("i")][Desciption("id of subscription")]
-            [MethodParameter("id")] int subscriptionId,
-            Session session, CommandLine line)
-        {
-            Console.WriteLine(subscriptionId);
         }
     }
 }
