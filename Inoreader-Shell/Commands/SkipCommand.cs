@@ -1,15 +1,15 @@
-using System.Linq;
 using Inoreader;
 using Inoreader.Dto;
 using Jasily.Framework.ConsoleEngine;
 using Jasily.Framework.ConsoleEngine.Attributes;
+using System.Linq;
 
 namespace InoreaderShell.Commands
 {
     [Command("skip")]
     public sealed class SkipCommand : ItemCommand
     {
-        [Parameter("id", IsOptional = true)]
+        [PropertyParameter("id", IsOptional = true)]
         [Alias("i")]
         public int Id { get; set; } = -1;
 

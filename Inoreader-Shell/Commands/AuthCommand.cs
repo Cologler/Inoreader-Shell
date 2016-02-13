@@ -1,22 +1,25 @@
 ﻿using Inoreader;
 using Jasily.Framework.ConsoleEngine;
 using Jasily.Framework.ConsoleEngine.Attributes;
+using Jasily.Framework.ConsoleEngine.Commands;
 
 namespace InoreaderShell.Commands
 {
     [Command("auth")]
     [Desciption("authentication using google email and password.")]
-    public sealed class AuthCommand : BaseCommand
+    public sealed class AuthCommand : BaseCommand, IDesciptionCommand
     {
-        [Parameter("user")]
+        [PropertyParameter("user")]
         [Alias("u")]
         [Desciption("google email")]
         public string UserName { get; set; }
 
-        [Parameter("pwd")]
+        [PropertyParameter("pwd")]
         [Alias("p")]
         [Desciption("google account password")]
         public string Password { get; set; }
+
+        public string Desciption => "auth\t\t\t\t\tauthentication using google email and password.";
 
         protected override void Execute(Variables variables, Session session, CommandLine line)
         {

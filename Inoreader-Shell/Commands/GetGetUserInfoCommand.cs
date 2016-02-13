@@ -4,8 +4,9 @@ using Jasily.Framework.ConsoleEngine.Attributes;
 
 namespace InoreaderShell.Commands
 {
-    [Command("get-userinfo", IsStatic = true)]
+    [Command("get-userinfo")]
     [Desciption("get user info")]
+    [Static]
     public sealed class GetGetUserInfoCommand : AuthedCommand
     {
         protected override void Execute(Variables variables, Proxy inoreader, Session session, CommandLine line)
