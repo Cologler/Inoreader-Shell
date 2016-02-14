@@ -1,4 +1,5 @@
 using Inoreader;
+using Inoreader.Dto;
 using Jasily.Framework.ConsoleEngine;
 using Jasily.Framework.ConsoleEngine.Extensions;
 
@@ -21,6 +22,37 @@ namespace InoreaderShell.Commands
             }
 
             return true;
+        }
+
+        public static StreamItems GetStreamItems(this Session session)
+            => session.GetVariables().Feed;
+
+        public static bool IsFeedsInitialized(this Session session)
+        {
+            if (session.GetStreamItems() == null)
+            {
+                session.WriteLine($"none item.");
+                return false;
+            }
+
+            return true;
+        }
+
+        public static void PrintItem(this Session session)
+        {
+            var items = session.GetStreamItems().Items;
+            if (items?.Count > 0)
+            {
+                for (var i = 0; i < items.Count; i++)
+                {
+                    var item = items[i];
+                    session.WriteLine($"[{i}] {item.Title}");
+                }
+            }
+            else
+            {
+                session.WriteLine($"there are no item.");
+            }
         }
     }
 }
