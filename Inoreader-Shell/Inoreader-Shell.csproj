@@ -52,9 +52,10 @@
     <Compile Include="Commands\FilterCommand.cs" />
     <Compile Include="Commands\GetGetUserInfoCommand.cs" />
     <Compile Include="Commands\ItemCommand.cs" />
+    <Compile Include="Commands\ListCommand.cs" />
     <Compile Include="Commands\ListFeedCommand.cs" />
-    <Compile Include="Commands\ListSubscriptionsCommand.cs" />
     <Compile Include="Commands\MakeAllReadCommand.cs" />
+    <Compile Include="Commands\SessionExtensions.cs" />
     <Compile Include="Commands\SkipCommand.cs" />
     <Compile Include="Commands\Variables.cs" />
     <Compile Include="Models\InoreaderShellFeedItem.cs" />

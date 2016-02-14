@@ -24,13 +24,17 @@ namespace InoreaderShell.Commands
         protected void Print(Session session)
         {
             var items = this.Variables.Feed?.Items;
-            if (items != null)
+            if (items?.Count != 0)
             {
                 for (var i = 0; i < items.Count; i++)
                 {
                     var item = items[i];
                     session.WriteLine($"[{i}] {item.Title}");
                 }
+            }
+            else
+            {
+                session.WriteLine($"there are no item.");
             }
         }
     }
