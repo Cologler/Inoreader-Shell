@@ -10,6 +10,6 @@ namespace InoreaderShell.Commands
 
         public List<Subscription> Subscriptions { get; set; }
 
-        public StreamItems Feed { get; set; }
+        public List<Item> FiltedItems { get; set; }
     }
 }

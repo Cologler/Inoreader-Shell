@@ -1,5 +1,5 @@
 ﻿using Jasily.Framework.ConsoleEngine;
-using System;
+using System.IO;
 using System.Reflection;
 
 namespace InoreaderShell
@@ -18,16 +18,18 @@ namespace InoreaderShell
         {
             var engine = new JasilyConsoleEngine();
             engine.MapperManager.RegistAssembly(Assembly.GetExecutingAssembly());
-            using (var session = engine.StartSession())
+            using (var session = engine.StartSession(desc: new Program()))
             {
-                session.Description = new Program();
-                session.ShowDescription();
-                while (true)
+                if (args.Length > 0 && Path.GetFileName(args[0]) == "cmd.txt")
                 {
-                    var line = Console.ReadLine() ?? string.Empty;
-                    if (line.ToLower() == "exit") return;
-                    session.Execute(line);
+                    var cmds = File.ReadAllLines(args[0]);
+                    foreach (var cmd in cmds)
+                    {
+                        session.WriteLine(cmd);
+                        session.Execute(cmd);
+                    }
                 }
+                session.StartUp();
             }
         }
     }

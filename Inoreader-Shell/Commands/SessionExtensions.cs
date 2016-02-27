@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Inoreader;
 using Inoreader.Dto;
 using Jasily.Framework.ConsoleEngine;
@@ -24,14 +25,11 @@ namespace InoreaderShell.Commands
             return true;
         }
 
-        public static StreamItems GetStreamItems(this Session session)
-            => session.GetVariables().Feed;
-
         public static bool IsFeedsInitialized(this Session session)
         {
-            if (session.GetStreamItems() == null)
+            if (session.GetVariables().FiltedItems == null)
             {
-                session.WriteLine($"none item.");
+                session.WriteLine("none item.");
                 return false;
             }
 
@@ -40,7 +38,7 @@ namespace InoreaderShell.Commands
 
         public static void PrintItem(this Session session)
         {
-            var items = session.GetStreamItems().Items;
+            var items = session.GetVariables().FiltedItems;
             if (items?.Count > 0)
             {
                 for (var i = 0; i < items.Count; i++)

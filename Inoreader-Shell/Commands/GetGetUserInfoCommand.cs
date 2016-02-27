@@ -1,18 +1,22 @@
 using Inoreader;
 using Jasily.Framework.ConsoleEngine;
 using Jasily.Framework.ConsoleEngine.Attributes;
+using Jasily.Framework.ConsoleEngine.Commands;
 
 namespace InoreaderShell.Commands
 {
     [Command("get-userinfo")]
     [Desciption("get user info")]
     [Static]
-    public sealed class GetGetUserInfoCommand : AuthedCommand
+    public sealed class GetGetUserInfoCommand : ICommand
     {
-        protected override void Execute(Variables variables, Proxy inoreader, Session session, CommandLine line)
+        public void Execute(Session session, CommandLine line)
         {
-            var user = inoreader.GetUserInfo();
-            session.WriteLine(user.UserId);
+            if (session.IsAuthed())
+            {
+                var user = session.GetVariables().Inoreader.GetUserInfo();
+                session.WriteLine(user.UserId);
+            }
         }
     }
 }
