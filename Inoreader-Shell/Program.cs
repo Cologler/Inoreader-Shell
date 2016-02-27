@@ -29,7 +29,8 @@ namespace InoreaderShell
                         session.Execute(cmd);
                     }
                 }
-                session.StartUp();
+
+                if (!session.IsShutdowned) session.StartUp();
             }
         }
     }
