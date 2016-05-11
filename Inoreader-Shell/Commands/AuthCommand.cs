@@ -30,13 +30,13 @@ namespace InoreaderShell.Commands
 
         public string Desciption => "auth\t\t\t\t\tauthentication using google email and password.";
 
-        public void Execute(Session session, CommandLine line, int[] workedGroupId)
+        public void Execute(Session session, CommandLine line, int[] matchedGroupId)
         {
             var variables = session.GetVariables();
 
             Proxy inoreader = null;
 
-            foreach (var id in workedGroupId)
+            foreach (var id in matchedGroupId)
             {
                 switch (id)
                 {

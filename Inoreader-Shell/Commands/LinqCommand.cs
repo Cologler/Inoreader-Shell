@@ -1,8 +1,8 @@
+using System;
+using System.Linq;
 using Inoreader.Dto;
 using Jasily.Framework.ConsoleEngine;
 using Jasily.Framework.ConsoleEngine.Attributes;
-using System;
-using System.Linq;
 
 namespace InoreaderShell.Commands
 {
@@ -15,7 +15,7 @@ namespace InoreaderShell.Commands
             if (session.IsFeedsInitialized())
             {
                 var var = session.GetVariables();
-                var blocks = line.Blocks.ToArray();
+                var blocks = line.ParameterBlocks.ToArray();
                 if (blocks.Length > 2)
                 {
                     var selector = this.GetSelectorFunc(blocks[0].OriginText);
@@ -43,7 +43,7 @@ namespace InoreaderShell.Commands
             if (session.IsFeedsInitialized())
             {
                 var var = session.GetVariables();
-                var blocks = line.Blocks.ToArray();
+                var blocks = line.ParameterBlocks.ToArray();
                 if (blocks.Length > 2)
                 {
                     var selector = this.GetSelectorFunc(blocks[0].OriginText);

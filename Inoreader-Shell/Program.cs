@@ -1,6 +1,6 @@
-﻿using Jasily.Framework.ConsoleEngine;
-using System.IO;
+﻿using System.IO;
 using System.Reflection;
+using Jasily.Framework.ConsoleEngine;
 
 namespace InoreaderShell
 {
@@ -18,7 +18,7 @@ namespace InoreaderShell
         {
             var engine = new JasilyConsoleEngine();
             engine.MapperManager.RegistAssembly(Assembly.GetExecutingAssembly());
-            using (var session = engine.StartSession(desc: new Program()))
+            using (var session = engine.StartSession("inoreader", new Program()))
             {
                 if (args.Length > 0 && Path.GetFileName(args[0]) == "cmd.txt")
                 {
